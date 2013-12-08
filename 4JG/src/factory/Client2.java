@@ -14,11 +14,11 @@ public class Client2 {
 	 */
 	public static void main(String[] args) {
 		Fabrik ef=new SpezialFabrik();
-		Artikel usb=ElektronikFabrik.erzeuge("USB_Stick");
+		Artikel usb=SpezialFabrik.erzeuge("USB_Stick");
 		ef.add(usb);
-		Artikel maroni=TiefKuehlFabrik.erzeuge("Maronireis");
-		Artikel tkspinat=TiefKuehlFabrik.erzeuge("Spinat");
-		Artikel spinat=GemueseFabrik.erzeuge("Spinat");
+		Artikel maroni=SpezialFabrik.erzeuge("Maronireis");
+		Artikel tkspinat=SpezialFabrik.erzeuge("Spinat");
+		Artikel spinat=SpezialFabrik.erzeuge("Spinat");
 		ef.add(spinat);
 		ef.add(tkspinat);
 		ef.add(maroni);

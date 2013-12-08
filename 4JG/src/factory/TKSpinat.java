@@ -11,4 +11,7 @@ public class TKSpinat extends TiefkuehlProdukt {
 	public TKSpinat(int nummer, String bezeichnung, double preis,int menge, Einheiten mengenEinheit) {
 		super(nummer,bezeichnung,preis,menge,mengenEinheit);
 	}
+	public TKSpinat(){
+		this(443, "Tiefkuehl Spinat", 1.49,250,Einheiten.G);
+	}
 }

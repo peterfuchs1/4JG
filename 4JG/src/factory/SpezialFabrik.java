@@ -7,7 +7,8 @@ public class SpezialFabrik extends Fabrik {
 	public static Artikel erzeuge(String produkt) {
 		Artikel ret=null;
 		try {
-			Class<?> cls=Class.forName(produkt);
+					
+			Class<?> cls=Class.forName("factory."+produkt);
 			ret=(Artikel)cls.newInstance();
 		} catch (ClassNotFoundException | InstantiationException | IllegalAccessException e) {
 			
