@@ -71,7 +71,7 @@ public abstract class Fabrik {
 			while(iter.hasNext()){
 				Artikel a=iter.next();
 				kosten+=a.getPreis();
-				sb.append("Artikel: ").append(a.getNummer());
+				sb.append(a.getKategorie()).append(": ").append(a.getNummer());
 				sb.append(", ").append(a.getMenge()).append(a.getMengenEinheit());
 				sb.append(" ").append(a.getBezeichnung());
 				sb.append(", Preis: ").append(a.getPreis());

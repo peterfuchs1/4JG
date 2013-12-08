@@ -18,7 +18,7 @@ public class Client2 {
 		ef.add(usb);
 		Artikel maroni=SpezialFabrik.erzeuge("Maronireis");
 		Artikel tkspinat=SpezialFabrik.erzeuge("Spinat");
-		Artikel spinat=SpezialFabrik.erzeuge("Spinat");
+		Artikel spinat=SpezialFabrik.erzeuge("TKSpinat");
 		ef.add(spinat);
 		ef.add(tkspinat);
 		ef.add(maroni);

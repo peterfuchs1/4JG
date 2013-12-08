@@ -139,5 +139,12 @@ public abstract class Artikel {
 		this.menge = menge;
 	}
 
+	/**
+	 * @return the kategorie
+	 */
+	public String getKategorie() {
+		return kategorie;
+	}
+
 
 }
