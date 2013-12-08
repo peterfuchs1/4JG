@@ -1,6 +1,7 @@
 package factory;
 
 
+import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -63,8 +64,20 @@ public abstract class Fabrik {
 	public String toString() {
 		StringBuilder sb=new StringBuilder();
 		int size=einkaufsWagen.size();
-		sb.append("Der Einkaufswagen enthaelt: ").append(size).append(fabArt).append("\n");
+		sb.append("Der Einkaufswagen enthaelt ").append(fabArt).append(": ").append(size).append("\n");
 		if(size>0){
+			Iterator<Artikel> iter=einkaufsWagen.iterator();
+			double kosten=0.0;
+			while(iter.hasNext()){
+				Artikel a=iter.next();
+				kosten+=a.getPreis();
+				sb.append("Artikel: ").append(a.getNummer());
+				sb.append(", ").append(a.getMenge()).append(a.getMengenEinheit());
+				sb.append(" ").append(a.getBezeichnung());
+				sb.append(", Preis: ").append(a.getPreis());
+				sb.append("\n");
+			}
+			sb.append("Gesamtkosten: ").append(kosten).append("\n");
 			sb.append("Die Produkte wurden ");
 			if(!bezahlt)
 				sb.append("noch nicht ");

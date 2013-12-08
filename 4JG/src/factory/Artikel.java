@@ -23,7 +23,7 @@ public abstract class Artikel {
 	 * @param menge
 	 */
 	public Artikel(int nummer, String bezeichnung, double preis,
-			double gewicht, Einheiten mengenEinheit, int menge) {
+			int menge, Einheiten mengenEinheit,double gewicht ) {
 		this.nummer = nummer;
 		this.bezeichnung = bezeichnung;
 		this.preis = preis;
@@ -41,8 +41,8 @@ public abstract class Artikel {
 	 * @param mengenEinheit
 	 */
 	public Artikel(int nummer, String bezeichnung, double preis,
-			double gewicht, Einheiten mengenEinheit) {
-		this(nummer,bezeichnung,preis,gewicht,mengenEinheit,1);
+			int menge, Einheiten mengenEinheit) {
+		this(nummer,bezeichnung,preis,menge,mengenEinheit,1);
 	}
 
 	/**
@@ -51,8 +51,8 @@ public abstract class Artikel {
 	 * @param preis
 	 * @param gewicht
 	 */
-	public Artikel(int nummer, String bezeichnung, double preis, double gewicht) {
-		this(nummer,bezeichnung, preis,gewicht,Einheiten.STK,1);
+	public Artikel(int nummer, String bezeichnung, double preis, int menge) {
+		this(nummer,bezeichnung, preis,menge,Einheiten.STK,1);
 	}
 
 	/**
