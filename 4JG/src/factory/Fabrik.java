@@ -15,7 +15,7 @@ public abstract class Fabrik {
 	private List<Artikel> einkaufsWagen;
 
 	/**
-	 * 
+	 * Konstruktor
 	 */
 	public Fabrik() {
 		einkaufsWagen=new LinkedList<Artikel>();
@@ -24,20 +24,34 @@ public abstract class Fabrik {
 		verschickt=false;
 		fabArt="";
 	}
-
+	/**
+	 * kein Produkt erzeugt
+	 * @param produkt
+	 * @return
+	 */
 	public static  Artikel erzeuge(String produkt) {return null;}
+	/**
+	 * Produkt in den Einkaufswagen
+	 * @param produkt
+	 */
 	public void add(Artikel produkt){
 		einkaufsWagen.add(produkt);
 	}
-
+	/**
+	 * Produkte bezahlt
+	 */
 	public void bezahlen() {
 		bezahlt=true;
 	}
-
+	/**
+	 * Produkte verpackt
+	 */
 	public void verpacken() {
 		verpackt=true;
 	}
-
+	/**
+	 * Produkte verschickt
+	 */
 	public void verschicken() {
 		verschickt=true;
 	}
