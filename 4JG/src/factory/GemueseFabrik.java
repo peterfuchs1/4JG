@@ -9,7 +9,7 @@ public class GemueseFabrik extends Fabrik {
 		Artikel ret=null;
 		switch(produkt){
 		case "Spinat":
-			ret= new Spinat(443, "frischer Spinat", 2.49,250,Einheiten.G); break;
+			ret= new Spinat(43, "frischer Spinat", 2.49,250,Einheiten.G); break;
 		}	
 		return ret;
 	}
