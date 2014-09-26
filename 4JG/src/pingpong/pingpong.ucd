@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<editmodel:ClassDiagramEditModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:editmodel="editmodel.xmi" xmlns:options="options.xmi" size="991,1021" id="pingpong" metadata="uml2-1.0" initialized="true" scrolledY="150" tag="1000" key="32303037303533312D3130303020546872656164732F75687333373468">
+  <children xsi:type="editmodel:ClassEditModel" name="PingPong_WatchDog" location="80,555" size="176,67" id="pingpong/PingPong_WatchDog" runTimeClassModel="main([Ljava.lang.String;)">
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <children xsi:type="editmodel:CompartmentEditModel" size="114,18">
+      <children xsi:type="editmodel:MethodEditModel" name="main" id="pingpong/PingPong_WatchDog#main([Ljava.lang.String;)"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" showMethodsParameterTypes="true" showMethodsReturnType="true" showMethodsParameterNames="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPrivateAttributes="true" showProtectedAttributes="true" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showProtectedMethods="true" showPublicMethods="true" showPackageMethods="true" showPrivateMethods="true" showStaticMethods="true" showProtectedInnerClasses="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showPrivateInnerClasses="true" showStaticInnerClasses="true" packageIndication="3" showAttributeProperty="true" showAssociationMember="true"/>
+  </children>
+  <children xsi:type="editmodel:ClassEditModel" name="WatchDog" location="372,539" size="197,157" id="pingpong/WatchDog" runTimeClassModel="dauer,WatchDog(Ljava.lang.Thread;I),t,run(),WatchDog(Ljava.lang.Thread;),dAUER">
+    <children xsi:type="editmodel:CompartmentEditModel" size="71,54">
+      <children xsi:type="editmodel:AttributeEditModel" name="dAUER" id="pingpong/WatchDog#dAUER"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="dauer" id="pingpong/WatchDog#dauer"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="t" id="pingpong/WatchDog#t"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel" size="174,54">
+      <children xsi:type="editmodel:MethodEditModel" name="WatchDog" id="pingpong/WatchDog#WatchDog(Ljava.lang.Thread;I)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="WatchDog" id="pingpong/WatchDog#WatchDog(Ljava.lang.Thread;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="run" id="pingpong/WatchDog#run()"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" showMethodsParameterTypes="true" showMethodsReturnType="true" showMethodsParameterNames="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPrivateAttributes="true" showProtectedAttributes="true" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showProtectedMethods="true" showPublicMethods="true" showPackageMethods="true" showPrivateMethods="true" showStaticMethods="true" showProtectedInnerClasses="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showPrivateInnerClasses="true" showStaticInnerClasses="true" packageIndication="3" showAttributeProperty="true" showAssociationMember="true"/>
+  </children>
+  <children xsi:type="editmodel:ClassEditModel" name="PingPong" location="406,50" size="279,193" id="pingpong/PingPong" runTimeClassModel="main([Ljava.lang.String;),PingPong(),PingPong(Ljava.lang.String;ILjava.lang.String;),run(),PingPong(Ljava.lang.String;I),word,delay,zusatz">
+    <children xsi:type="editmodel:CompartmentEditModel" size="86,54">
+      <children xsi:type="editmodel:AttributeEditModel" name="delay" id="pingpong/PingPong#delay"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="word" id="pingpong/PingPong#word"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="zusatz" id="pingpong/PingPong#zusatz"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel" size="256,90">
+      <children xsi:type="editmodel:MethodEditModel" name="PingPong" id="pingpong/PingPong#PingPong(Ljava.lang.String;I)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="PingPong" id="pingpong/PingPong#PingPong(Ljava.lang.String;ILjava.lang.String;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="PingPong" id="pingpong/PingPong#PingPong()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="main" id="pingpong/PingPong#main([Ljava.lang.String;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="run" id="pingpong/PingPong#run()"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" showMethodsParameterTypes="true" showMethodsReturnType="true" showMethodsParameterNames="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPrivateAttributes="true" showProtectedAttributes="true" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showProtectedMethods="true" showPublicMethods="true" showPackageMethods="true" showPrivateMethods="true" showStaticMethods="true" showProtectedInnerClasses="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showPrivateInnerClasses="true" showStaticInnerClasses="true" packageIndication="3" showAttributeProperty="true" showAssociationMember="true"/>
+  </children>
+  <children xsi:type="editmodel:ClassEditModel" name="PingPong_WatchDog_sauber" location="619,539" size="226,67" id="pingpong/PingPong_WatchDog_sauber" runTimeClassModel="main([Ljava.lang.String;)">
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <children xsi:type="editmodel:CompartmentEditModel" size="114,18">
+      <children xsi:type="editmodel:MethodEditModel" name="main" id="pingpong/PingPong_WatchDog_sauber#main([Ljava.lang.String;)"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" showMethodsParameterTypes="true" showMethodsReturnType="true" showMethodsParameterNames="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPrivateAttributes="true" showProtectedAttributes="true" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showProtectedMethods="true" showPublicMethods="true" showPackageMethods="true" showPrivateMethods="true" showStaticMethods="true" showProtectedInnerClasses="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showPrivateInnerClasses="true" showStaticInnerClasses="true" packageIndication="3" showAttributeProperty="true" showAssociationMember="true"/>
+  </children>
+  <children xsi:type="editmodel:ClassEditModel" name="WatchDog_stop" location="568,330" size="272,139" id="pingpong/WatchDog_stop" runTimeClassModel="dauer,WatchDog_stop(Lpingpong.StoppableThread;I),t,run(),WatchDog_stop(Lpingpong.StoppableThread;),dAUER">
+    <children xsi:type="editmodel:CompartmentEditModel" size="71,36">
+      <children xsi:type="editmodel:AttributeEditModel" name="dAUER" id="pingpong/WatchDog_stop#dAUER"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="dauer" id="pingpong/WatchDog_stop#dauer"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel" size="249,54">
+      <children xsi:type="editmodel:MethodEditModel" name="WatchDog_stop" id="pingpong/WatchDog_stop#WatchDog_stop(Lpingpong.StoppableThread;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="WatchDog_stop" id="pingpong/WatchDog_stop#WatchDog_stop(Lpingpong.StoppableThread;I)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="run" id="pingpong/WatchDog_stop#run()"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <sourceConnections xsi:type="editmodel:AssociationEditModel" autoLocated="true" id="pingpong/StoppableThread@t+pingpong/WatchDog_stop@" source="//@children.4" target="//@children.7" targetEnd="//@children.4/@sourceConnections.0/@children.2" label="//@children.4/@sourceConnections.0/@children.0" sourceEnd="//@children.4/@sourceConnections.0/@children.1" connectionRouterKind="Manhattan">
+      <children xsi:type="editmodel:WireLabelEditModel" size="0,14" anchorKind="MiddlePart"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="0,10" id="pingpong/StoppableThread@t+pingpong/WatchDog_stop@|pingpong/WatchDog_stop#" attachSource="true"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" name="t" location="142,29" id="pingpong/StoppableThread@t+pingpong/WatchDog_stop@|pingpong/StoppableThread#t" multiplicityLabel="//@children.4/@sourceConnections.0/@children.2/@children.1" roleLabel="//@children.4/@sourceConnections.0/@children.2/@children.0" navigable="true">
+        <children xsi:type="editmodel:LabelEditModel" name=" - t" location="276,217" size="13,14" anchorKind="LastPart"/>
+        <children xsi:type="editmodel:LabelEditModel" name="0..1" location="244,217" size="18,14" anchorKind="LastPart"/>
+      </children>
+    </sourceConnections>
+    <sourceConnections xsi:type="editmodel:DependencyEditModel" autoLocated="true" id="pingpong/WatchDog_stop-Soyatec::Import->pingpong/StoppableThread*pingpong/WatchDog_stop-Standard::Call->pingpong/StoppableThread" source="//@children.4" target="//@children.7" targetEnd="//@children.4/@sourceConnections.1/@children.2" label="//@children.4/@sourceConnections.1/@children.0" sourceEnd="//@children.4/@sourceConnections.1/@children.1" connectionRouterKind="Manual">
+      <children xsi:type="editmodel:WireLabelEditModel" name="«Import, Call»" size="64,14" anchorKind="MiddlePart"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="5,0" attachSource="true"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="152,14"/>
+    </sourceConnections>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" showMethodsParameterTypes="true" showMethodsReturnType="true" showMethodsParameterNames="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPrivateAttributes="true" showProtectedAttributes="true" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showProtectedMethods="true" showPublicMethods="true" showPackageMethods="true" showPrivateMethods="true" showStaticMethods="true" showProtectedInnerClasses="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showPrivateInnerClasses="true" showStaticInnerClasses="true" packageIndication="3" showAttributeProperty="true" showAssociationMember="true"/>
+  </children>
+  <children xsi:type="editmodel:InterfaceEditModel" targetConnections="//@children.7/@sourceConnections.0" name="Stoppable" location="149,50" size="107,81" id="pingpong/Stoppable" runTimeClassModel="stopping()">
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <children xsi:type="editmodel:CompartmentEditModel" size="71,18">
+      <children xsi:type="editmodel:MethodEditModel" name="stopping" id="pingpong/Stoppable#stopping()"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" showMethodsParameterTypes="true" showMethodsReturnType="true" showMethodsParameterNames="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPrivateAttributes="true" showProtectedAttributes="true" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showProtectedMethods="true" showPublicMethods="true" showPackageMethods="true" showPrivateMethods="true" showStaticMethods="true" showProtectedInnerClasses="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showPrivateInnerClasses="true" showStaticInnerClasses="true" packageIndication="3" showAttributeProperty="true" showAssociationMember="true"/>
+  </children>
+  <children xsi:type="editmodel:ClassEditModel" name="PingPong_stop" location="50,260" size="306,229" id="pingpong/PingPong_stop" runTimeClassModel="main([Ljava.lang.String;),stopped,stopping(),run(),PingPong_stop(Ljava.lang.String;I),word,PingPong_stop(Ljava.lang.String;ILjava.lang.String;),delay,zusatz,PingPong_stop()">
+    <children xsi:type="editmodel:CompartmentEditModel" size="102,72">
+      <children xsi:type="editmodel:AttributeEditModel" name="delay" id="pingpong/PingPong_stop#delay"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="stopped" id="pingpong/PingPong_stop#stopped"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="word" id="pingpong/PingPong_stop#word"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="zusatz" id="pingpong/PingPong_stop#zusatz"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel" size="283,108">
+      <children xsi:type="editmodel:MethodEditModel" name="PingPong_stop" id="pingpong/PingPong_stop#PingPong_stop(Ljava.lang.String;ILjava.lang.String;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="PingPong_stop" id="pingpong/PingPong_stop#PingPong_stop(Ljava.lang.String;I)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="PingPong_stop" id="pingpong/PingPong_stop#PingPong_stop()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="main" id="pingpong/PingPong_stop#main([Ljava.lang.String;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="run" id="pingpong/PingPong_stop#run()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="stopping" id="pingpong/PingPong_stop#stopping()"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <sourceConnections xsi:type="editmodel:GeneralizationEditModel" autoLocated="true" id="pingpong/StoppableThread&lt;-pingpong/PingPong_stop" source="//@children.6" target="//@children.7" targetEnd="//@children.6/@sourceConnections.0/@children.1" sourceEnd="//@children.6/@sourceConnections.0/@children.0" connectionRouterKind="Manual">
+      <children xsi:type="editmodel:AssociationEndEditModel" location="153,0" attachSource="true"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="76,29"/>
+    </sourceConnections>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" showMethodsParameterTypes="true" showMethodsReturnType="true" showMethodsParameterNames="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPrivateAttributes="true" showProtectedAttributes="true" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showProtectedMethods="true" showPublicMethods="true" showPackageMethods="true" showPrivateMethods="true" showStaticMethods="true" showProtectedInnerClasses="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showPrivateInnerClasses="true" showStaticInnerClasses="true" packageIndication="3" showAttributeProperty="true" showAssociationMember="true"/>
+  </children>
+  <children xsi:type="editmodel:ClassEditModel" targetConnections="//@children.6/@sourceConnections.0 //@children.4/@sourceConnections.0 //@children.4/@sourceConnections.1" name="StoppableThread" location="127,181" size="152,29" id="pingpong/StoppableThread" runTimeClassModel="">
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <sourceConnections xsi:type="editmodel:GeneralizationEditModel" autoLocated="true" id="pingpong/Stoppable&lt;-pingpong/StoppableThread" source="//@children.7" target="//@children.5" targetEnd="//@children.7/@sourceConnections.0/@children.1" sourceEnd="//@children.7/@sourceConnections.0/@children.0" connectionRouterKind="Manual">
+      <children xsi:type="editmodel:AssociationEndEditModel" location="75,0" attachSource="true"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="53,81"/>
+    </sourceConnections>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" showMethodsParameterTypes="true" showMethodsReturnType="true" showMethodsParameterNames="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPrivateAttributes="true" showProtectedAttributes="true" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showProtectedMethods="true" showPublicMethods="true" showPackageMethods="true" showPrivateMethods="true" showStaticMethods="true" showProtectedInnerClasses="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showPrivateInnerClasses="true" showStaticInnerClasses="true" packageIndication="3" showAttributeProperty="true" showAssociationMember="true"/>
+  </children>
+  <diagramOptions xsi:type="options:ClassDiagramOptions" interactive="false" level="-1" showScope="InPackage" properties="wireOptions=1;Product=eUML2"/>
+  <boardSetting snapToGeometry="true" gridEnabled="true" gridSpacing="15,15" gridOrigin="0,0" rulerUnit="pixel" gridVisibility="false">
+    <leftRuler/>
+    <topRuler/>
+  </boardSetting>
+  <classDiagramPreferences xsi:type="editmodel:UMLClassDiagramPreference" showPopupBars="true" showConnectionHandles="true" showMethodsParameterTypes="true" showMethodsReturnType="true" showMethodsParameterNames="true" attributeSorter="Natural" methodSorter="Natural" showClassStereotype="true" showPackageStereotype="true" showDependencyStereotype="true" showInterfaceStereotype="true" innerClassSorter="Natural" showPrivateAttributes="true" showProtectedAttributes="true" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showProtectedMethods="true" showPublicMethods="true" showPackageMethods="true" showPrivateMethods="true" showStaticMethods="true" showProtectedInnerClasses="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showPrivateInnerClasses="true" showStaticInnerClasses="true" packageIndication="3" showAttributeProperty="true" showAssociationMember="true"/>
+</editmodel:ClassDiagramEditModel>
