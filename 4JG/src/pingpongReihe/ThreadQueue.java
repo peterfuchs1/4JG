@@ -21,7 +21,7 @@ public class ThreadQueue implements ThreadQueuing {
 	 * @see pingpongReihe.ThreadQueuing#open(pingpongReihe.Stoppable)
 	 */
 	@Override
-	public synchronized void open(Stoppable s) {
+	public synchronized void isOpen(Stoppable s) {
 		while (s != actualElement)
 			try {
 				this.wait();
@@ -36,7 +36,7 @@ public class ThreadQueue implements ThreadQueuing {
 	 * @see pingpongReihe.ThreadQueuing#ready()
 	 */
 	@Override
-	public synchronized void ready() {
+	public synchronized void finished() {
 		actualElement = nextElement();
 		this.notifyAll();
 	}

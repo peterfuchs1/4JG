@@ -11,15 +11,15 @@ package pingpongReihe;
 public interface ThreadQueuing {
 	/**
 	 * Are we the active stoppable?
-	 * Let's wait and queue!
+	 * Otherwise let's wait and queue!
 	 * @param s a stoppable
 	 */
-	public void open(Stoppable s);
+	public void isOpen(Stoppable s);
 	/**
 	 * We have finished our work
 	 * Next one please!
 	 */
-	public void ready();
+	public void finished();
 	/**
 	 * register for queuing
 	 * @param s a stoppable

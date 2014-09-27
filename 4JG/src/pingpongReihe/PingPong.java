@@ -55,10 +55,10 @@ public class PingPong extends Thread implements Stoppable
 		{ 
 			while (!stopped) // forever
 			{ 
-				q.open(this);// ask the queue, whether it's open or go sleeping
+				q.isOpen(this);// ask the queue, whether it's open or go sleeping
 				System.out.print(word + " "+zusatz);
 				Thread.sleep(delay); //let's sleep a little bit
-				q.ready(); // tell the queue, that we've finished our work
+				q.finished(); // tell the queue, that we've finished our work
 			}
 			q.unRegister(this);	// let's say good bye to the queue
 		}
