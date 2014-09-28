@@ -97,17 +97,17 @@ public class ThreadQueue implements ThreadQueuing {
 	}
 
 	/**
-	 * who is next If we have reached the tail, let us start from the head
-	 * again!
+	 * who is next? 
+	 * if we have reached the tail, 
+	 * let us start from the head again!
 	 * 
 	 * @return the next stoppable or null
 	 */
 	private Stoppable nextElement() {
 		Stoppable ret = null;
 		if (!q.isEmpty()) {
-			if (!iter.hasNext()) {
+			if (!iter.hasNext()) 
 				iter = q.iterator();
-			}
 			ret = iter.next();
 		}
 		return ret;
