@@ -16,9 +16,9 @@ public class PingPong_WatchDogService
 	{ 
 		ThreadQueuing q=new ThreadQueue();
 		// create serval threads
-		PingPong p1=new PingPong(q,"ping1", 100); // 1/30 sec.
-		PingPong p2=new PingPong(q,".",150,"\n"); // 1/20 sec mit Zeilenvorschub
-		PingPong p3=new PingPong(q,"PONG2",200); // 1/10 sec.
+		PingPong p1=new PingPong(q,"ping1", 100); // 1/10 sec.
+		PingPong p2=new PingPong(q,".",150,"\n"); // 1/7 sec mit Zeilenvorschub
+		PingPong p3=new PingPong(q,"PONG2",200); // 1/5 sec.
 		PingPong p4=new PingPong(q,"Ping3",100); // 1/10 sec.
 		PingPong p5=new PingPong(q,"Pong4",100); // 1/10 sec.
 		// create a watchdogservice

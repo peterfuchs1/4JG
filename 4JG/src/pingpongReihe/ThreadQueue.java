@@ -7,13 +7,16 @@ import java.util.Iterator;
 import java.util.concurrent.ConcurrentLinkedQueue;
 
 /**
- * @author uhs374h
+ * ThreadQueue mit festgelegter Reihenfolge
+ * 
+ * @author Walter Rafeiner-Magor
+ * @version 1.1
  *
  */
 public class ThreadQueue implements ThreadQueuing {
-	private ConcurrentLinkedQueue<Stoppable> q;
-	private Iterator<Stoppable> iter;
-	private Stoppable actualElement;
+	private ConcurrentLinkedQueue<Stoppable> q; // the queue
+	private Iterator<Stoppable> iter;			// iterator 
+	private Stoppable expectedElement;			// expected Thread 
 
 	/*
 	 * (non-Javadoc)
@@ -22,7 +25,8 @@ public class ThreadQueue implements ThreadQueuing {
 	 */
 	@Override
 	public synchronized void isOpen(Stoppable s) {
-		while (s != actualElement)
+		// The wrong thread has to wait!
+		while (s != expectedElement)
 			try {
 				this.wait();
 			} catch (InterruptedException e) {
@@ -37,7 +41,9 @@ public class ThreadQueue implements ThreadQueuing {
 	 */
 	@Override
 	public synchronized void finished() {
-		actualElement = nextElement();
+		// After work go to the next element
+		this.expectedElement = nextElement();
+		// inform all threads
 		this.notifyAll();
 	}
 
@@ -68,11 +74,18 @@ public class ThreadQueue implements ThreadQueuing {
 		// We should register uniquely
 		if (!this.isRegistered(s)) {
 			q.add(s);
-			iter = q.iterator();
-			actualElement = nextElement();
+			resetQueue();
 		}
 	}
-
+	/**
+	 * in case of queue change, reset the queue 
+	 */
+	private void resetQueue(){
+		// create a new iterator
+		this.iter = q.iterator();
+		// go forward to the next element
+		this.expectedElement = nextElement();
+	}
 	/*
 	 * (non-Javadoc)
 	 * 
@@ -80,8 +93,7 @@ public class ThreadQueue implements ThreadQueuing {
 	 */
 	public void unRegister(Stoppable s) {
 		q.remove(s);
-		iter = q.iterator();
-		actualElement = nextElement();
+		resetQueue();
 	}
 
 	/**
