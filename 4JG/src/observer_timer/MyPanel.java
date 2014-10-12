@@ -29,9 +29,9 @@ public class MyPanel extends JPanel {
 		this.setLayout(new GridLayout(2, 3));
 		JLabel jlTimer= new JLabel("Timerstatus:");
 		this.add(jlTimer);
-		this.tStatus=new JLabel("not available");
+		this.tStatus=new JLabel("not available",JLabel.CENTER);
 		this.add(tStatus);
-		this.tMessage=new JLabel("no message");
+		this.tMessage=new JLabel("no message",JLabel.CENTER);
 		this.add(tMessage);
 		this.jbStop=new JButton("Stopping");
 		this.jbStart=new JButton("Starting");

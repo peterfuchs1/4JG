@@ -1,5 +1,7 @@
 package observer_timer;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.GregorianCalendar;
 import java.util.LinkedList;
 /**
@@ -55,7 +57,11 @@ public class MyTimer implements IObservable, Runnable, StartStoppable {
 	 * @return Zeit als String
 	 */
 	private String getTime(){
-		return GregorianCalendar.getInstance().getTime().toString();
+		Calendar calendar=GregorianCalendar.getInstance();
+		SimpleDateFormat fmt = new SimpleDateFormat("HH:mm:ss");
+		fmt.setCalendar(calendar);
+		return fmt.format(calendar.getTime());
+	
 	}
 	
 	@Override
