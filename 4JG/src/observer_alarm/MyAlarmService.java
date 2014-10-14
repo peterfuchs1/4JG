@@ -4,23 +4,24 @@ import java.util.concurrent.ConcurrentHashMap;
 
 
 /**
- * @author Walter Rafeiner-Magor 
- * WatchDogService: Steuerung der Ausführung mehrerer Threads
- * 
- * 
+ * AlarmService: stellt laut Observer-Pattern das Observable oder Subject dar
+ * Jeder Client, der sich anmeldet bekommt nach fester (3s) oder mitgebener Zeit
+ * einen Alarm.
+ * Dieser Alarm ist solange gültig, bis der Client sich wieder vom Service abmeldet
+ * @author Walter Rafeiner-Magor
+ * @version 1.1 
  */
-public class MyTimerService extends Thread implements IObservable, Stoppable{
+public class MyAlarmService extends Thread implements IObservable, Stoppable{
 	public static final long LIFE=3000;		
 	public static final long WD_SLEEPS=1000;
 	private boolean stopped;
-	private boolean started;
 	private long millis;
 	// In dieser Map werden alle aktuellen Observer gespeichert
 	private ConcurrentHashMap<IObserver, Long> os; 
 	/**
 	 * standard constructor
 	 */
-	public MyTimerService(){
+	public MyAlarmService(){
 		this.createHM();
 	}
 	
@@ -58,7 +59,7 @@ public class MyTimerService extends Thread implements IObservable, Stoppable{
 	@Override
 	public void run() {
 		millis=System.currentTimeMillis();
-		// while the map is not emtpy
+		// loop until we shall stop
 		while (!stopped){
 			notifyObservers();
 			try {
@@ -73,7 +74,7 @@ public class MyTimerService extends Thread implements IObservable, Stoppable{
 		if (os==null)
 			os=new ConcurrentHashMap<IObserver,Long>();
 		stopped=false;
-
+		// start our alarm service ...
 		this.start();
 	}
 
@@ -82,26 +83,18 @@ public class MyTimerService extends Thread implements IObservable, Stoppable{
 	public void notifyObservers() {
 			// walk through the keys
 			for(IObserver s  : os.keySet()) {
-				// test whether the is up
+				// test whether the duration is reached or not
 				if(os.get(s)<System.currentTimeMillis()-millis) {
-					// stop it and remove it from the map
+					// alarm our client
 					s.alarm();  
 				}
-			}
-			
-		
+			}		
 	}
-
-	
-
 
 	@Override
 	public void stopping() {
 		stopped=true;
-		
 	}
-
-
 
 	@Override
 	public boolean isStopped() {

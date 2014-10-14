@@ -25,10 +25,8 @@ import javax.swing.JButton;
  */
 public class MyController extends WindowAdapter implements ActionListener, IObserver{
 	private MyPanel p;
-	private MyFrame f;
 	private MyAlarm a;
 	private IObservable timer;
-	private boolean ringing;
 	/**
 	 * Konstruktor
 	 * Bekommt ein StartStoppable zur Steuerung
@@ -38,14 +36,14 @@ public class MyController extends WindowAdapter implements ActionListener, IObse
 		this.timer=timer;
 		a=new MyAlarm();
 		p= new MyPanel(this);
-		f= new MyFrame(p, "MyTimer", this);
+		new MyFrame(p, "MyTimer", this);
 	}
 	/**
 	 * Startet die Applikation
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		MyTimerService timer=new MyTimerService(); // Erstellt einen neuen MyTimer
+		MyAlarmService timer=new MyAlarmService(); // Erstellt einen neuen MyTimer
 		MyController c=new MyController(timer); // Startet die GUI
 		timer.addObserver(c);		// Meldet sich beim Observable an
 	}

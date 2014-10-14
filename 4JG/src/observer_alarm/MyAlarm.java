@@ -3,7 +3,6 @@
  */
 package observer_alarm;
 
-import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
@@ -16,8 +15,12 @@ import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
 
 /**
+ * MyAlarm kann ein Audiofile (wav,au,aiff) in einer Endlosschleife
+ * abspielen.
+ * Das Abspielen kann durch stop, start und close 
+ * von aussen beeinflusst werden.
  * @author Walter Rafeiner-Magor
- * 
+ * @version 1.1
  */
 public class MyAlarm {
 	public static final String ALARM = "alarm.wav";
