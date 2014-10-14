@@ -17,8 +17,8 @@ public class MyPanel extends JPanel {
 
 	private JLabel tStatus;
 	private JLabel tMessage;
-	private JButton jbStop;
-	private JButton jbStart;
+	private JButton jbDeactivate;
+	private JButton jbRemove;
 	private JButton jbExit;
 	/**
 	 * MyPanel stellt den Status des MyTimers dar
@@ -33,14 +33,15 @@ public class MyPanel extends JPanel {
 		this.add(tStatus);
 		this.tMessage=new JLabel("no alarm",JLabel.CENTER);
 		this.add(tMessage);
-		this.jbStop=new JButton("Stopping");
-		this.jbStart=new JButton("Starting");
+		this.jbDeactivate=new JButton("Deactivate");
+		this.jbRemove=new JButton("Remove");
 		this.jbExit=new JButton("Exit");
-		this.jbStop.addActionListener(myController);
-		this.jbStart.addActionListener(myController);
+		this.jbDeactivate.addActionListener(myController);
+		this.jbRemove.setEnabled(false);
+		this.jbRemove.addActionListener(myController);
 		this.jbExit.addActionListener(myController);
-		this.add(jbStop);
-		this.add(jbStart);
+		this.add(jbDeactivate);
+		this.add(jbRemove);
 		this.add(jbExit);
 	}
 	// GETTER UND SETTER
@@ -75,15 +76,15 @@ public class MyPanel extends JPanel {
 	/**
 	 * @return the jbStop
 	 */
-	public JButton getJbStop() {
-		return jbStop;
+	public JButton getjbDeactivate() {
+		return jbDeactivate;
 	}
 
 	/**
 	 * @return the jbStart
 	 */
-	public JButton getJbStart() {
-		return jbStart;
+	public JButton getjbRemove() {
+		return jbRemove;
 	}
 
 	/**

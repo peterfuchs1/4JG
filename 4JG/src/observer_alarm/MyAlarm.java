@@ -25,11 +25,16 @@ public class MyAlarm {
 	private AudioInputStream audioInputStream;
 	private Clip clip;
 	private boolean ringing;
-
+	/**
+	 * Standardkonstruktor
+	 */
 	public MyAlarm() {
 		this(ALARM);
 	}
-
+	/**
+	 * Konstruktor mit alarm-file
+	 * @param soundName
+	 */
 	public MyAlarm(String soundName) {
 		this.soundName = soundName;
 		try {
@@ -46,14 +51,18 @@ public class MyAlarm {
 		}
 		ringing = false;
 	}
-
+	/**
+	 * startet Alarm
+	 */
 	public void start() {
 		if (!ringing) {
 	        clip.loop(Clip.LOOP_CONTINUOUSLY);
 			ringing = true;
 		}
 	}
-
+	/**
+	 * stoppt den Alarm
+	 */
 	public void stop() {
 		if(ringing) {
 			clip.stop();
@@ -61,7 +70,9 @@ public class MyAlarm {
 			ringing=false;
 		}
 	}
-
+	/**
+	 * beendet den audioclip
+	 */
 	public void close() {
 		clip.close();
 	}
@@ -74,7 +85,7 @@ public class MyAlarm {
 	@Override
 	protected void finalize() throws Throwable {
 		super.finalize();
-		clip.close();
+		this.close();
 	}
 
 }

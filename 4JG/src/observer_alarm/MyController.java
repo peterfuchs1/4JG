@@ -27,14 +27,14 @@ public class MyController extends WindowAdapter implements ActionListener, IObse
 	private MyPanel p;
 	private MyFrame f;
 	private MyAlarm a;
-	private Stoppable timer;
+	private IObservable timer;
 	private boolean ringing;
 	/**
 	 * Konstruktor
 	 * Bekommt ein StartStoppable zur Steuerung
 	 * @param timer
 	 */
-	public MyController(Stoppable timer){
+	public MyController(IObservable timer){
 		this.timer=timer;
 		a=new MyAlarm();
 		p= new MyPanel(this);
@@ -69,17 +69,20 @@ public class MyController extends WindowAdapter implements ActionListener, IObse
 		if(b==p.getJbExit()){ // Exit-Button
 			this.exitNow();
 		}
-		else if(b==p.getJbStart()){ // Start-Button
-			p.settStatus("running");
+		else if(b==p.getjbRemove()){ // Remove-Button
+			timer.removeObserver(this);
 		}
-		else if(b==p.getJbStop()){ // Stop-Button
-			timer.stopping();
+		else if(b==p.getjbDeactivate()){ // Deactivate-Button
+			p.settStatus("deactivated");
 			p.settMessage("alarm cancled!");
 			a.stop();
 		}
 	}
 	@Override
 	public void alarm() {
+		p.settStatus("activated");
+		p.settMessage("alarmed!");
+		p.getjbRemove().setEnabled(true);
 		a.start();
 	}
 	
