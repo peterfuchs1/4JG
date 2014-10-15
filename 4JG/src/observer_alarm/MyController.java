@@ -69,6 +69,7 @@ public class MyController extends WindowAdapter implements ActionListener, IObse
 		}
 		else if(b==p.getjbRemove()){ // Remove-Button
 			timer.removeObserver(this);
+			p.getjbRemove().setEnabled(false);
 		}
 		else if(b==p.getjbDeactivate()){ // Deactivate-Button
 			p.settStatus("deactivated");
