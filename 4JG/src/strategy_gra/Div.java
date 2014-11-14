@@ -5,4 +5,10 @@ public class Div implements Strategy {
     public int execute(int a, int b) {
         return a / b;  
     }
+
+	@Override
+	public String explanation() {
+
+		return "Divide";
+	}
 }

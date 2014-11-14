@@ -4,4 +4,5 @@ package strategy_gra;
 // The context class uses this to call the concrete strategy
 public interface Strategy {
 	public int execute(int a, int b); 
+	public String explanation();
 }

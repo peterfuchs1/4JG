@@ -10,7 +10,7 @@ public class Start {
 		gra[i++]=new Div();
 		gra[i++]=new Mod();
 		for(Strategy s: gra){
-			System.out.println(s.execute(3, 6));
+			System.out.println(s.explanation()+":"+s.execute(6, 3));
 		}
 	}
 	
