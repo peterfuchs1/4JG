@@ -1,0 +1,71 @@
+<?xml version="1.0"?>
+<project name="Rational-Test" default="main" basedir=".">
+	<!-- Sets variables which can later be used. -->
+	<!-- The value of a property is accessed via ${} -->
+	<property name="app-name" value="Rational" />
+	<property name="pkg" value="rational" />
+	<property name="src.dir" location="src/${pkg}" />
+	<property name="build.dir" location="build" />
+	<property name="dist.dir" location="dist/${pkg}" />
+	<property name="docs.dir" location="doc/${pkg}" />
+
+	<!-- Deletes the existing build, docs and dist directory-->
+	<target name="clean">
+		<delete dir="${build.dir}" />
+		<delete dir="${docs.dir}" />
+		<delete dir="${dist.dir}" />
+	</target>
+
+	<!-- Creates the  build, docs and dist directory-->
+	<target name="makedir">
+		<mkdir dir="${build.dir}" />
+		<mkdir dir="${build.dir}/${pkg}" />
+		<mkdir dir="${docs.dir}" />
+		<mkdir dir="${dist.dir}" />
+	</target>
+
+	<!-- Compiles the java code (including the usage of library for JUnit -->
+	<target name="compile" depends="clean, makedir">
+		<javac srcdir="${src.dir}" includeantruntime="true" destdir="${build.dir}">
+		</javac>
+
+	</target>
+
+	<!-- Creates Javadoc -->
+	<target name="docs" depends="compile">
+		<javadoc packagenames="src" sourcepath="${src.dir}" destdir="${docs.dir}">
+			<!-- Define which files / directory should get included, we include all -->
+			<fileset dir="${src.dir}">
+				<include name="**" />
+				<exclude name="test*.*" />
+			</fileset>
+		</javadoc>
+
+	</target>
+
+	<!--Creates the deployable jar file  -->
+	<target name="jar" depends="compile, docs">
+		<jar destfile="${dist.dir}/${app-name}.jar" basedir="${build.dir}">
+            <manifest>
+                <attribute name="Main-Class" value="${pkg}.${app-name}"/>
+            </manifest>
+		</jar>
+	</target>
+
+
+    <target name="run" depends="jar">
+        <java fork="true" classname="${pkg}.${app-name}">
+            <classpath>
+                <path refid="classpath"/>
+                <path location="${dist.dir}/${app-name}.jar"/>
+            </classpath>
+        </java>
+    </target>
+	<!-- Default: Creates all -->
+	<target name="main" depends="compile, jar, docs">
+		<description>Main target</description>
+	</target>
+	<path id="classpath">
+	    <fileset dir="${dist.dir}" includes="**/*.jar"/>
+	</path>
+</project>
