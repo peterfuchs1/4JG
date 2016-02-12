@@ -91,13 +91,15 @@ public class MockitoHelloWorldExample5 {
 	 *
 	 */
 	private static class FooAnswers implements Answer<String> {
-		public String answer(InvocationOnMock invocation) throws Throwable {
+		public String answer(InvocationOnMock invocation) throws Throwable, InvalidQuestion {
 			String arg = (String) invocation.getArguments()[0];
-			if (ANY_NEW_TOPICS.equals(arg)) {
+			
+			switch(arg){
+			case ANY_NEW_TOPICS: 
 				return YES_NEW_TOPICS_AVAILABLE;
-			} else if (WHAT_IS_TODAYS_TOPIC.equals(arg)) {
+			case WHAT_IS_TODAYS_TOPIC: 
 				return TOPIC_MOCKITO;
-			} else {
+			default: 
 				throw new InvalidQuestion();
 			}
 		}
@@ -173,7 +175,7 @@ public class MockitoHelloWorldExample5 {
 
 
 	@Test
-	public void getTodaysTopicPrice() {
+	public void getTodaysTopicAndPriceWithAnyNewTopic() {
 		Bar bar = new Bar();
 		when(foo.questionStrictly(argThat(new ValidQuestions()))).thenAnswer(
 				new FooAnswers());
@@ -189,7 +191,7 @@ public class MockitoHelloWorldExample5 {
 	}
 
 	@Test
-	public void getTodaysTopicPrice2() {
+	public void getTodaysTopicWithWhatIsTodaysTopic() {
 		Bar bar = new Bar();
 		when(foo.questionStrictly(argThat(new ValidQuestions()))).thenAnswer(
 				new FooAnswers());
@@ -202,6 +204,21 @@ public class MockitoHelloWorldExample5 {
 		verify(foo, never()).questionStrictly(ANY_NEW_TOPICS);
 		verify(foo, never()).getPrice(TOPIC_MOCKITO);
 		verify(foo, never()).bye();
+	}
+	
+	@Test(expected=InvalidQuestion.class)
+	public void getTodaysTopicWithWrongQuestion() {
+		Bar bar = new Bar();
+		String invalidQuestion = "Invalid question";
+		when(foo.questionStrictly(argThat(new InValidQuestions()))).thenAnswer(
+				new FooAnswers());
+
+		bar.questionStrictly(foo, invalidQuestion);
+		// this is not reachable!
+//		verify(foo, never()).questionStrictly(WHAT_IS_TODAYS_TOPIC);
+//		verify(foo, never()).questionStrictly(ANY_NEW_TOPICS);
+//		verify(foo, never()).getPrice(TOPIC_MOCKITO);
+//		verify(foo, never()).bye();
 	}
 	
 
