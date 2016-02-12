@@ -13,7 +13,9 @@ package mock;
 import static mock.Foo.*;
 import static org.junit.Assert.*;
 
-import org.junit.Test;
+import org.junit.*;
+import org.mockito.Mock;
+import org.mockito.MockitoAnnotations;
 import static org.mockito.Mockito.*;
 
 /**
@@ -23,15 +25,28 @@ import static org.mockito.Mockito.*;
  * @author uhs374h
  * @version 1.0
  */
-public class MockitoHelloWorldExample1 {
+public class MockitoHelloWorldExample0 {
 	
-	
+	@Mock
+	private Foo foo;
+
+	@Before
+	public void setupMockTests() {		
+		// Initialize annotations for mockito
+		MockitoAnnotations.initMocks(this);
+		when(foo.greet()).thenReturn(HELLO_WORLD).thenReturn(" and good bye!");
+	}
 	
 	@Test
 	public void fooGreets() {
-		Foo foo = mock(Foo.class);
-		when(foo.greet()).thenReturn(HELLO_WORLD);
-		System.out.println("Foo greets: " + foo.greet());
 		assertEquals(foo.greet(), HELLO_WORLD);
 	}
+	
+	@Test
+	public void fooGreetsToTimes() {
+		String expected=HELLO_WORLD+" and good bye!";
+		String actual= foo.greet();
+		assertEquals(expected, actual+foo.greet());
+	}
+
 }
