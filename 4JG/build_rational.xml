@@ -8,6 +8,8 @@
 	<property name="build.dir" location="build" />
 	<property name="dist.dir" location="dist/${pkg}" />
 	<property name="docs.dir" location="doc/${pkg}" />
+	<property name="ext-lib" location="/java/log4j"/>
+
 
 	<!-- Deletes the existing build, docs and dist directory-->
 	<target name="clean">
@@ -26,7 +28,8 @@
 
 	<!-- Compiles the java code (including the usage of library for JUnit -->
 	<target name="compile" depends="clean, makedir">
-		<javac srcdir="${src.dir}" includeantruntime="true" destdir="${build.dir}">
+		<javac srcdir="${src.dir}" includeantruntime="true" 
+			destdir="${build.dir}" classpathref="classpath">
 		</javac>
 
 	</target>
@@ -38,7 +41,12 @@
 			<fileset dir="${src.dir}">
 				<include name="**" />
 				<exclude name="test*.*" />
+				<exclude name="*.xml" />
 			</fileset>
+            <classpath>
+                <path refid="classpath"/>
+                
+            </classpath>		
 		</javadoc>
 
 	</target>
@@ -50,9 +58,32 @@
                 <attribute name="Main-Class" value="${pkg}.${app-name}"/>
             </manifest>
 		</jar>
+		<copy todir="${dist.dir}" overwrite="false">
+		  <fileset dir="${src.dir}">
+			<include name="*.xml" />
+			<exclude name="test*.*" />
+			</fileset>
+		</copy>
+		
 	</target>
 
+	<path id="classpath">
+	    <fileset dir="${dist.dir}"> 
+	    	<include name="**/*" /> 
+	    </fileset>
+		<fileset dir="${ext-lib}" includes="**/*.jar"/>
+	</path>
 
+    <target name="only-run">
+        <java fork="true" classname="${pkg}.${app-name}">
+            <classpath>
+                <path refid="classpath"/>
+                <path location="${dist.dir}/${app-name}.jar"/>
+            </classpath>
+        </java>
+    </target>
+
+	
     <target name="run" depends="jar">
         <java fork="true" classname="${pkg}.${app-name}">
             <classpath>
@@ -65,7 +96,4 @@
 	<target name="main" depends="compile, jar, docs">
 		<description>Main target</description>
 	</target>
-	<path id="classpath">
-	    <fileset dir="${dist.dir}" includes="**/*.jar"/>
-	</path>
 </project>

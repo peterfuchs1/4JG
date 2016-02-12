@@ -2,6 +2,9 @@ package rational;
 
 import java.math.BigInteger;
 
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+
 public class Rational implements Comparable<Rational> {
 
 	// Fields
@@ -358,27 +361,30 @@ public class Rational implements Comparable<Rational> {
 	}
 
 	// main
+
+	static final Logger logger = LogManager.getLogger(Rational.class);
 	// A test driver for the Rational class
 	// To run this test, do "java Rational" at the command line
 	public static void main(String[] args) {
 
+		//BasicConfigurator.configure();
 		Rational A = new Rational(25893,51647);
 		Rational B = new Rational(-46008L,51647);
 		Rational C = new Rational(62750931,51808256L);
 
-		System.out.println(A);
-		System.out.println(B);
-		System.out.println(C);
+		logger.error(A);
+		logger.error(B);
+		logger.error(C);
 
 		Rational D = B.mult(C);
-		System.out.println(D.getNumerator());
-		System.out.println(D.getDenominator());
-		System.out.println(D);
+		logger.error(D.getNumerator());
+		logger.error(D.getDenominator());
+		logger.error(D);
 
 		A.sub(D);
-		System.out.println(A);
-		System.out.println(B);
-		System.out.println(C);
-		System.out.println(D);
+		logger.error(A);
+		logger.error(B);
+		logger.error(C);
+		logger.error(D);
 	}
 }
