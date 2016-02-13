@@ -78,8 +78,8 @@ public class MockitoHelloWorldExample5 {
 		@Override
 		public boolean matches(Object o) {
 			String argument=(String)o;
-			return argument.equals(ANY_NEW_TOPICS)
-					|| argument.equals(WHAT_IS_TODAYS_TOPIC);
+			return argument.equals(Foo.ANY_NEW_TOPICS)
+					|| argument.equals(Foo.WHAT_IS_TODAYS_TOPIC);
 		}
 	}
 	/**
@@ -95,17 +95,17 @@ public class MockitoHelloWorldExample5 {
 			String arg = (String) invocation.getArguments()[0];
 			
 			switch(arg){
-			case ANY_NEW_TOPICS: 
-				return YES_NEW_TOPICS_AVAILABLE;
-			case WHAT_IS_TODAYS_TOPIC: 
-				return TOPIC_MOCKITO;
+			case Foo.ANY_NEW_TOPICS: 
+				return Foo.YES_NEW_TOPICS_AVAILABLE;
+			case Foo.WHAT_IS_TODAYS_TOPIC: 
+				return Foo.TOPIC_MOCKITO;
 			default: 
 				throw new InvalidQuestion();
 			}
 		}
 	}
 
-	private final static ValidQuestions VALID_QUESTIONS = new ValidQuestions();;
+	private final static ValidQuestions VALID_QUESTIONS = new ValidQuestions();
 	
 	
 	@Before
@@ -150,7 +150,7 @@ public class MockitoHelloWorldExample5 {
 		Bar bar = new Bar();		
 		String invalidQuestion = "Invalid question";
 		bar.question(foo, invalidQuestion);	
-		// Verify that question was never requested as Foo is un-available
+		// Verify that question was never requested as Foo is unavailable
 		verify(foo, never()).question(invalidQuestion);
 	}
 	
@@ -184,7 +184,7 @@ public class MockitoHelloWorldExample5 {
 		String answer = bar.questionStrictly(foo, ANY_NEW_TOPICS);
 		// Answer is: Topic is Mockito, price is 20
 		assertEquals(answer, "Topic is Mockito, price is 20");
-		// Not only the answer is import, but the behavior too
+		// Not only the answer is important, but the behavior too
 		verify(foo, times(1)).questionStrictly(WHAT_IS_TODAYS_TOPIC);
 		verify(foo, times(1)).getPrice(TOPIC_MOCKITO);
 		verify(foo, times(1)).bye();
@@ -199,7 +199,7 @@ public class MockitoHelloWorldExample5 {
 		String answer = bar.questionStrictly(foo, WHAT_IS_TODAYS_TOPIC);
 		// Answer is: Mockito
 		assertEquals(answer, TOPIC_MOCKITO);
-		// Not only the answer is import, but the behavior too
+		// Not only the answer is important, but the behavior too
 		verify(foo, times(1)).questionStrictly(WHAT_IS_TODAYS_TOPIC);
 		verify(foo, never()).questionStrictly(ANY_NEW_TOPICS);
 		verify(foo, never()).getPrice(TOPIC_MOCKITO);

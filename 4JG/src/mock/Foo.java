@@ -1,21 +1,21 @@
 package mock;
 
 public interface Foo {
-	public String HELLO_WORLD = "Hello World";
+	public final static String HELLO_WORLD = "Hello World";
 	public String greet();
 	
-	public String ANY_NEW_TOPICS = "Are there any new topics?";	
+	public final static String ANY_NEW_TOPICS = "Are there any new topics?";	
 	public String question(String question);
 	
 	public String questionStrictly(String question) throws InvalidQuestion;
 	
-	public String WHAT_IS_TODAYS_TOPIC = "What is todays topic?";
+	public final static String WHAT_IS_TODAYS_TOPIC = "What is todays topic?";
 
-	String YES_NEW_TOPICS_AVAILABLE = "Yes";
-	String NO_NEW_TOPIC = "No";
-	String TOPIC_MOCKITO = "Mockito";
+	public final static String YES_NEW_TOPICS_AVAILABLE = "Yes";
+	public final static String NO_NEW_TOPIC = "No";
+	public final static String TOPIC_MOCKITO = "Mockito";
 
-	int getPrice(String tutorial);
+	public int getPrice(String tutorial);
 
-	void bye();
+	public void bye();
 }

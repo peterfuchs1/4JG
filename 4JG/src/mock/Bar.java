@@ -34,6 +34,7 @@ public class Bar {
 	 * verfiy whether a Foo is available or not
 	 * 
 	 * @param foo
+	 * @return true, if a Foo is available
 	 * @throws FooNotAvailable
 	 */
 	public boolean verifyFooConnection(Foo foo) throws FooNotAvailable {
