@@ -13,11 +13,11 @@ public class Light {
 	}
 	public void on(int level) {
 		level = 100;
-		System.out.println(location+": Light is on");
+		System.out.println(location+": The light is on");
 	}
 	public void off(int level) {
 		level = 0;
-		System.out.println(location+": Light is off");
+		System.out.println(location+": The light is off");
 	}
 	public void off(){
 		this.off(0);
@@ -37,7 +37,7 @@ public class Light {
 	}
 	
 	private void dim(){
-		System.out.println(location+": Light is dimmed to " + this.level + "%");
+		System.out.println(location+": The light is dimmed to " + this.level + "%");
 	}
 	
 	/**
