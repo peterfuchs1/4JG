@@ -2,7 +2,7 @@ package mock.geofunctions;
 
 import mock.sensors.PositionSensor;
 
-class DistanceTo
+public class DistanceTo
 {
 	private PositionSensor pos;
 	
@@ -19,6 +19,14 @@ class DistanceTo
 	}
 	
 	/**
+	 * Constructor
+	 * 
+	 */
+	public DistanceTo() {
+		this(null);
+	}
+
+	/**
 	 * Calculates the distance between the actual position (given by the sensor) and
 	 * the position in the parameters
 	 * @param lat1 latitude of the point we want to know the distance to
@@ -26,21 +34,43 @@ class DistanceTo
 	 * @param unit unit of the distance. can be M (miles) or K (kilometers) or N (nautical miles)
 	 * @return distance in the given unit
 	 */
-	public double distanceTo(double lat1, double lon1, String unit) {
-		return distanceFromTo(lat1,lon1,pos.getLatitude(),pos.getLongitude(), unit);
+	public double distanceTo(double lon1,double lat1,  String unit) {
+		return DistanceTo.distanceFromTo(lon1,lat1,pos.getLongitude(),pos.getLatitude(), unit);
+	}
+	/**
+	 * Calculates the distance between the actual position (given by the sensor) and
+	 * the position in the parameters
+	 * @param lat1 latitude of the point we want to know the distance to
+	 * @param lon1 longitude of the point we want to know the distance to
+	 * @param unit unit of the distance. can be M (miles) or K (kilometers) or N (nautical miles)
+	 * @return distance in the given unit
+	 */
+	public double distanceTo(Position pos1, String unit) {
+		return DistanceTo.distanceFromTo(pos1.getLon(),pos1.getLat(),pos.getLongitude(),pos.getLatitude(), unit);
 	}
 	
 	/**
-	 * Calculates the distance between two positions (given by a sensor)
+	 * Calculates the distance between two positions (given by a sensor) and in the parameters
 	 * @param pos1 first position from a sensor
 	 * @param pos2 second position from a sensor
 	 * @param unit unit of the distance. can be M (miles) or K (kilometers) or N (nautical miles)
 	 * @return distance in the given unit
 	 */
-	public static double distanceFromTo(PositionSensor pos1, PositionSensor pos2, String unit){
-		return DistanceTo.distanceFromTo(pos1.getLatitude(),pos1.getLongitude(),pos2.getLatitude(),pos2.getLongitude(), unit);
+	public static double distanceFromTo(PositionSensor pos1, Position pos2, String unit){
+		return DistanceTo.distanceFromTo(pos1.getLongitude(),pos1.getLatitude(),pos2.getLon(),pos2.getLat(), unit);
 	}
-	
+	/**
+	 * Calculates the distance between two positions in the parameters
+	 * @param pos1 first position 
+	 * @param pos2 second position 
+	 * @param unit unit of the distance. can be M (miles) or K (kilometers) or N (nautical miles)
+	 * @return distance in the given unit
+	 */
+
+	public static double distanceFromTo(Position pos1, Position pos2, String unit){
+		return DistanceTo.distanceFromTo(pos1.getLon(),pos1.getLat(),pos2.getLon(),pos2.getLat(), unit);
+	}
+
 	/**
 	 * Calculates the distance between two positions in the parameters
 	 * @param lat1 latitude of the point we want to know the distance to
@@ -50,7 +80,8 @@ class DistanceTo
 	 * @param unit unit of the distance. can be M (miles) or K (kilometers) or N (nautical miles)
 	 * @return distance in the given unit
 	 */
-	public static double distanceFromTo(double lat1, double lon1, double lat2, double lon2, String unit){
+	public static double distanceFromTo(double lon1,double lat1, double lon2, double lat2,  String unit){
+		
 		double theta = lon1 - lon2;
 		double dist = Math.sin(deg2rad(lat1)) * Math.sin(deg2rad(lat2)) + Math.cos(deg2rad(lat1)) * Math.cos(deg2rad(lat2)) * Math.cos(deg2rad(theta));
 		dist = Math.acos(dist);
@@ -61,7 +92,7 @@ class DistanceTo
 		} else if (unit == "N") {
 			dist = dist * 0.8684;
 		}
-
+		
 		return dist;
 	}
 	
@@ -73,8 +104,8 @@ class DistanceTo
 	 * @return distance to the given sight in the given unit
 	 */
 	public double howFarTo(String sight, String unit) {
-		double[] sightpos = this.pos.getPositionOfSight(sight);
-		double distance = distanceTo(sightpos[0], sightpos[1], unit);
+		Position sightpos = this.pos.getPositionOfSight(sight);
+		double distance = distanceTo(sightpos, unit);
 		return distance;
 	}
 

@@ -1,5 +1,7 @@
 package mock.sensors;
 
+import mock.geofunctions.Position;
+
 public interface PositionSensor {
 	/**
 	 * Returns the longitude of the actual position of the sensor
@@ -17,10 +19,10 @@ public interface PositionSensor {
 	 * Returns the geographical position of a sight (like "Eiffeltower")
 	 * The allowed sights are stored in a database.
 	 * @param sight name of the sight to get position from
-	 * @return array with longitude/latitude (in this order)
+	 * @return an instance of Position
 	 * @throws IllegalArgumentException if sight unknown
 	 */
-	public double[] getPositionOfSight(String sight);
+	public Position getPositionOfSight(String sight);
 	
 	/**
 	 * Stores the position of a sight in a database
@@ -30,5 +32,12 @@ public interface PositionSensor {
 	 * @return true if writing to db was a success, false otherwise
 	 */
 	public boolean setPositionOfSight(String sight, double longitude, double latitude);
-	
+	/**
+	 * Stores the position of a sight in a database
+	 * @param sight sight to store position for
+	 * @param longitude longitude of the position in degrees
+	 * @param latitude latitude of the position in degrees
+	 * @return true if writing to db was a success, false otherwise
+	 */	
+	public boolean setPositionOfSight(String sight, Position pos);
 }
