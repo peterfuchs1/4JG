@@ -27,13 +27,13 @@ public class TestRealGPS {
 	}
 
 	@Test
-	public final void testDistanceToWithGPS() {
+	public final void testConstructorDistanceToWithGPS() {
 		DistanceTo dist=new DistanceTo(gps); // no exception raised
 		assertNotNull(dist);
 	}
 
 	@Test(expected=IllegalArgumentException.class)
-	public final void testDistanceToWithoutGPS() {
+	public final void testConstructorDistanceToWithoutGPS() {
 		DistanceTo dist=new DistanceTo(); // exception raised
 		assertNotNull(dist);
 	}	

@@ -58,21 +58,21 @@ public class TestGPS {
 	}
 
 	@Test
-	public final void testGetPositionOfTGM() {
+	public final void testGetPositionOfSightTGM() {
 		Position expected=new Position();
 		Position actual=gps.getPositionOfSight("TGM");
 		assertTrue(expected.compareTo(actual)==0);
 	}
 	
 	@Test(expected=IllegalArgumentException.class)
-	public final void testGetPositionOfEiffeltower() {
+	public final void testGetPositionOfSightEiffeltower() {
 		Position expected=new Position();
 		Position actual=gps.getPositionOfSight("Eiffeltower");
 		assertTrue(expected.compareTo(actual)==0);
 	}
 	
 	@Test(expected=IllegalArgumentException.class)
-	public final void testGetPositionOfAtomium() {
+	public final void testGetPositionOfSightAtomium() {
 		Position expected=new Position();
 		Position actual=gps.getPositionOfSight("Atomium");
 		assertTrue(expected.compareTo(actual)==0);
