@@ -6,16 +6,18 @@
 	<property name="pkg" value="rational" />
 	<property name="src.dir" location="src/${pkg}" />
 	<property name="build.dir" location="build" />
-	<property name="dist.dir" location="dist/${pkg}" />
+	<property name="dist.dir" location="dist" />
 	<property name="docs.dir" location="doc/${pkg}" />
-	<property name="ext-lib" location="/java/log4j"/>
+	<property name="lib.dir" location="lib" />
+	<property name="dist.lib.dir" location="dist/lib" />
 
 
 	<!-- Deletes the existing build, docs and dist directory-->
 	<target name="clean">
 		<delete dir="${build.dir}" />
 		<delete dir="${docs.dir}" />
-		<delete dir="${dist.dir}" />
+		<delete dir="${dist.lib.dir}" />
+		<delete dir="${dist.dir}/${pkg}" />
 	</target>
 
 	<!-- Creates the  build, docs and dist directory-->
@@ -23,13 +25,12 @@
 		<mkdir dir="${build.dir}" />
 		<mkdir dir="${build.dir}/${pkg}" />
 		<mkdir dir="${docs.dir}" />
-		<mkdir dir="${dist.dir}" />
+		<mkdir dir="${dist.dir}/${pkg}" />
 	</target>
 
 	<!-- Compiles the java code (including the usage of library for JUnit -->
 	<target name="compile" depends="clean, makedir">
-		<javac srcdir="${src.dir}" includeantruntime="true" 
-			destdir="${build.dir}" classpathref="classpath">
+		<javac srcdir="${src.dir}" includeantruntime="true" destdir="${build.dir}" classpathref="classpath">
 		</javac>
 
 	</target>
@@ -43,55 +44,80 @@
 				<exclude name="test*.*" />
 				<exclude name="*.xml" />
 			</fileset>
-            <classpath>
-                <path refid="classpath"/>
-                
-            </classpath>		
+			<classpath>
+				<path refid="classpath" />
+
+			</classpath>
 		</javadoc>
 
 	</target>
 
 	<!--Creates the deployable jar file  -->
-	<target name="jar" depends="compile, docs">
-		<jar destfile="${dist.dir}/${app-name}.jar" basedir="${build.dir}">
-            <manifest>
-                <attribute name="Main-Class" value="${pkg}.${app-name}"/>
-            </manifest>
+	<target name="jar" depends="compile, docs, copy-dependencies" description="package, output to JAR">
+		<echo message="classpath.name : ${classpath.name} " />
+		<jar destfile="${dist.dir}/${pkg}/${app-name}.jar" basedir="${build.dir}">
+			<manifest>
+				<attribute name="Main-Class" value="${pkg}.${app-name}" />
+				<attribute name="Class-Path" value="${classpath.name}" />
+			</manifest>
 		</jar>
 		<copy todir="${dist.dir}" overwrite="false">
-		  <fileset dir="${src.dir}">
-			<include name="*.xml" />
-			<exclude name="test*.*" />
+			<fileset dir="${src.dir}">
+				<include name="*.xml" />
+				<exclude name="test*.*" />
 			</fileset>
 		</copy>
-		
+
 	</target>
 
 	<path id="classpath">
-	    <fileset dir="${dist.dir}"> 
-	    	<include name="**/*" /> 
-	    </fileset>
-		<fileset dir="${ext-lib}" includes="**/*.jar"/>
+		<fileset dir="${dist.dir}/${pkg}">
+			<include name="**/*" />
+		</fileset>
+		<fileset dir="${lib.dir}">
+			<include name="**/*.jar" />
+			<exclude name="**/*sources.jar"/>
+			<exclude name="**/*javadoc.jar"/>
+		</fileset>
+
 	</path>
 
-    <target name="only-run">
-        <java fork="true" classname="${pkg}.${app-name}">
-            <classpath>
-                <path refid="classpath"/>
-                <path location="${dist.dir}/${app-name}.jar"/>
-            </classpath>
-        </java>
-    </target>
-
+	<!-- constructs the external libraries classpath name -->
+	<pathconvert property="classpath.name" pathsep=" ">
+		<path refid="classpath" />
+		<mapper>
+			<chainedmapper>
+				<flattenmapper />
+				<globmapper from="*.jar" to="lib/*.jar" />
+			</chainedmapper>
+		</mapper>
+	</pathconvert>	
 	
-    <target name="run" depends="jar">
-        <java fork="true" classname="${pkg}.${app-name}">
-            <classpath>
-                <path refid="classpath"/>
-                <path location="${dist.dir}/${app-name}.jar"/>
-            </classpath>
-        </java>
-    </target>
+	<target name="copy-dependencies">
+		<mkdir dir="${dist.lib.dir}" />
+		<copy todir="${dist.lib.dir}">
+			<fileset dir="${lib.dir}" includes="**/*.jar, **/*.xml"  excludes="**/*sources.jar, **/*javadoc.jar" />
+		</copy>
+	</target>
+	
+	<target name="only-run">
+		<java fork="true" classname="${pkg}.${app-name}">
+			<classpath>
+				<path refid="classpath" />
+				<path location="${dist.dir}/${app-name}.jar" />
+			</classpath>
+		</java>
+	</target>
+
+
+	<target name="run" depends="jar">
+		<java fork="true" classname="${pkg}.${app-name}">
+			<classpath>
+				<path refid="classpath" />
+				<path location="${dist.dir}/${pkg}/${app-name}.jar" />
+			</classpath>
+		</java>
+	</target>
 	<!-- Default: Creates all -->
 	<target name="main" depends="compile, jar, docs">
 		<description>Main target</description>

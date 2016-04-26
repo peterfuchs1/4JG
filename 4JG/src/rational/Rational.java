@@ -93,7 +93,16 @@ public class Rational implements Comparable<Rational> {
 		return this.numerator.compareTo(BigInteger.ZERO) < 0;
 	}
 
-
+	
+	/* (non-Javadoc)
+	 * @see java.lang.Object#equals(java.lang.Object)
+	 */
+	@Override
+	public boolean equals(Object obj) {
+		if (!(obj instanceof Rational)) return false;
+		Rational r= (Rational) obj;
+		return this.compareTo(r)==0;
+	}
 	/**
 	 * compareTo to the second Rational
 	 * @param q the second Rational
@@ -176,7 +185,7 @@ public class Rational implements Comparable<Rational> {
 	 * @param q second Rational
 	 * @return new Rational
 	 */
-	Rational sub(Rational q) {
+	public Rational sub(Rational q) {
 		Rational p = this.copy();
 		return Rational.sub(p,q);
 	}
@@ -241,7 +250,7 @@ public class Rational implements Comparable<Rational> {
 	 */
 	public static Rational div(Rational p,Rational q) {
 		Rational s=q.copy();
-		q.invert();
+		s.invert();
 		return Rational.mult(p, s);
 	}
 
@@ -287,22 +296,22 @@ public class Rational implements Comparable<Rational> {
 	 * @return floatValue
 	 */
 	public float floatValue(){
-		return (this.numerator.divide(denominator)).floatValue();
+		return (this.numerator.floatValue()/denominator.floatValue());
 	}
 	/**
 	 * doubleValue of the current Rational
 	 * @return doubleValue
 	 */
 	public double doubleValue(){
-		return (this.numerator.divide(denominator)).doubleValue();
+		return (this.numerator.doubleValue()/denominator.doubleValue());
 	}
 	/**
 	 * shorten our string with the great common divisor
 	 */
 	public void shorten(){
 		BigInteger g= this.numerator.gcd(denominator);
-		this.numerator.divide(g);
-		this.denominator.divide(g);
+		this.numerator=this.numerator.divide(g);
+		this.denominator=this.denominator.divide(g);
 	}
 	/**
 	 * toString representation
@@ -362,29 +371,33 @@ public class Rational implements Comparable<Rational> {
 
 	// main
 
-	static final Logger logger = LogManager.getLogger(Rational.class);
+	
+
 	// A test driver for the Rational class
 	// To run this test, do "java Rational" at the command line
 	public static void main(String[] args) {
-
-		//BasicConfigurator.configure();
+		/* Get actual class name to be printed on */
+		Logger logger = LogManager.getLogger(Rational.class);
+		
+		logger.entry();
 		Rational A = new Rational(25893,51647);
 		Rational B = new Rational(-46008L,51647);
 		Rational C = new Rational(62750931,51808256L);
 
-		logger.error(A);
-		logger.error(B);
-		logger.error(C);
+		logger.info(A);
+		logger.info(B);
+		logger.info(C);
 
 		Rational D = B.mult(C);
-		logger.error(D.getNumerator());
-		logger.error(D.getDenominator());
-		logger.error(D);
+		logger.info(D.getNumerator());
+		logger.info(D.getDenominator());
+		logger.info(D);
 
 		A.sub(D);
 		logger.error(A);
 		logger.error(B);
 		logger.error(C);
 		logger.error(D);
+		logger.exit();
 	}
 }
