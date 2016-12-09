@@ -7,4 +7,9 @@ package mock;
  */
 public class FooNotAvailable extends RuntimeException {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 }

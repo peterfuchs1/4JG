@@ -4,7 +4,6 @@
 package observer_ticketshop;
 
 import java.util.Iterator;
-import java.util.LinkedList;
 import java.util.NavigableSet;
 import java.util.TreeMap;
 

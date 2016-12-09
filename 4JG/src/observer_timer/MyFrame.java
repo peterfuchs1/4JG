@@ -5,6 +5,11 @@ import java.awt.BorderLayout;
 import javax.swing.JFrame;
 
 public class MyFrame extends JFrame {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -236882586644137170L;
+
 	public MyFrame(MyPanel p, String header, MyController myController){
 		this.addWindowListener(myController);
 		this.setTitle(header);

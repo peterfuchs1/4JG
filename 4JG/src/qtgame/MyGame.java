@@ -1,11 +1,7 @@
 package qtgame;
 
 import com.trolltech.qt.gui.*;
-import com.trolltech.qt.core.*;
-
 import java.util.LinkedList;
-
-import com.trolltech.qt.QUiForm;
 
 public class MyGame extends QWidget {
 	
@@ -29,6 +25,7 @@ public class MyGame extends QWidget {
         QApplication.execStatic();
         QApplication.shutdown();
     }
+	@SuppressWarnings("unused")
 	private void connectButtons(){
 		for (QPushButton b: buttons){
 			b.clicked.connect(this, "buttonClicked(QPushButton)");

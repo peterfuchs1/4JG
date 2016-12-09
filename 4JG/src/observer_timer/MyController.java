@@ -18,7 +18,6 @@ import javax.swing.JButton;
  */
 public class MyController extends WindowAdapter implements ActionListener, IObserver{
 	private MyPanel p;
-	private MyFrame f;
 	private StartStoppable timer;
 	/**
 	 * Konstruktor
@@ -28,7 +27,7 @@ public class MyController extends WindowAdapter implements ActionListener, IObse
 	public MyController(StartStoppable timer){
 		this.timer=timer;
 		p= new MyPanel(this);
-		f= new MyFrame(p, "MyTimer", this);
+		new MyFrame(p, "MyTimer", this);
 	}
 	/**
 	 * Startet die Applikation

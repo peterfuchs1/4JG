@@ -21,7 +21,6 @@ import javax.sound.sampled.UnsupportedAudioFileException;
  */
 public class MyAlarm {
 	public static final String ALARM = "alarm.wav";
-	private String soundName;
 	private AudioInputStream audioInputStream;
 	private Clip clip;
 	private boolean ringing;
@@ -36,7 +35,6 @@ public class MyAlarm {
 	 * @param soundName
 	 */
 	public MyAlarm(String soundName) {
-		this.soundName = soundName;
 		try {
 			audioInputStream = AudioSystem.getAudioInputStream(
 					new File(soundName).getAbsoluteFile());

@@ -3,7 +3,6 @@
  */
 package timer;
 
-import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Timer;
 import java.util.TimerTask;

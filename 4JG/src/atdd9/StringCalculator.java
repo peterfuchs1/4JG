@@ -25,7 +25,9 @@ public class StringCalculator {
 		List<String> ll=new LinkedList<String>();
 		while (input.hasNext())
 			ll.add(input.next());
-		return new_add(ll.toArray(new String[0]));
+		int i= new_add(ll.toArray(new String[0]));
+		input.close();
+		return i;
 	}
 
 	private static int new_add(final String[] numbers) {

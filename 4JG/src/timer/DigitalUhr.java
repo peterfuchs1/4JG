@@ -1,7 +1,6 @@
 package timer;
 
 import java.awt.Toolkit;
-import java.time.ZonedDateTime;
 
 
 public class DigitalUhr {

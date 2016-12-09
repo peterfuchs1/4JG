@@ -13,7 +13,9 @@ public class StringCalculator {
 		List<String> ll=new LinkedList<String>();
 		while (input.hasNext())
 			ll.add(input.next());
-		return add(ll.toArray(new String[0]));
+		int i= add(ll.toArray(new String[0]));
+		input.close();
+		return i;
 	}
 
 	private static int add(final String[] numbers) {

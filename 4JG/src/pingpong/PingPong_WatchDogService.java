@@ -1,7 +1,5 @@
 package pingpong;
 
-import java.util.LinkedList;
-
 /***
  * PingPong Demo von Threads
  * @author Walter Rafeiner-Magor

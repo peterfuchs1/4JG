@@ -15,6 +15,10 @@ import javax.swing.JPanel;
  */
 public class MyPanel extends JPanel {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 590710930042658100L;
 	private JLabel tStatus;
 	private JLabel tMessage;
 	private JButton jbStop;

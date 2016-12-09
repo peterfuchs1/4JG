@@ -10,6 +10,10 @@
 	<property name="docs.dir" location="doc/${pkg}" />
 	<property name="lib.dir" location="lib" />
 	<property name="dist.lib.dir" location="dist/lib" />
+	<property name="test.classes.dir" location="${build.dir}/${pkg}/test"/>
+	<property name="report.dir" location="${dist.dir}"/>
+
+
 
 
 	<!-- Deletes the existing build, docs and dist directory-->
@@ -34,6 +38,25 @@
 		</javac>
 
 	</target>
+	<!-- Run the JUnit Test class -->
+	<target name="junit" depends="compile, jar">
+
+		<junit printsummary="yes" haltonfailure="no">
+
+			<!-- Project classpath, must include junit.jar -->
+			<classpath refid="classpath" />
+
+			<!-- test class -->
+			<classpath location="${test.classes.dir}" />
+
+			<test name="RationalTest.class" haltonfailure="no" todir="${report.dir}">
+				<formatter type="plain" />
+				<formatter type="xml" />
+			</test>
+
+		</junit>
+	</target>
+
 
 	<!-- Creates Javadoc -->
 	<target name="docs" depends="compile">
@@ -76,8 +99,8 @@
 		</fileset>
 		<fileset dir="${lib.dir}">
 			<include name="**/*.jar" />
-			<exclude name="**/*sources.jar"/>
-			<exclude name="**/*javadoc.jar"/>
+			<exclude name="**/*sources.jar" />
+			<exclude name="**/*javadoc.jar" />
 		</fileset>
 
 	</path>
@@ -91,15 +114,15 @@
 				<globmapper from="*.jar" to="lib/*.jar" />
 			</chainedmapper>
 		</mapper>
-	</pathconvert>	
-	
+	</pathconvert>
+
 	<target name="copy-dependencies">
 		<mkdir dir="${dist.lib.dir}" />
 		<copy todir="${dist.lib.dir}">
-			<fileset dir="${lib.dir}" includes="**/*.jar, **/*.xml"  excludes="**/*sources.jar, **/*javadoc.jar" />
+			<fileset dir="${lib.dir}" includes="**/*.jar, **/*.xml" excludes="**/*sources.jar, **/*javadoc.jar" />
 		</copy>
 	</target>
-	
+
 	<target name="only-run">
 		<java fork="true" classname="${pkg}.${app-name}">
 			<classpath>

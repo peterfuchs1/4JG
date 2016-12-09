@@ -6,14 +6,9 @@ import java.awt.EventQueue;
 import javax.script.ScriptEngine;
 import javax.script.ScriptEngineManager;
 import javax.script.ScriptException;
-import javax.swing.BorderFactory;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
-import javax.swing.border.Border;
 import javax.swing.border.EmptyBorder;
-
-import java.awt.GridLayout;
-import java.awt.GridBagLayout;
 
 import javax.swing.SpringLayout;
 import javax.swing.JTextField;
@@ -28,6 +23,10 @@ import javax.swing.SwingConstants;
 import java.awt.Font;
 
 public class SimpleCalc extends JFrame {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -8898969492235330L;
 	private JButton btn9;
 	private JButton btn8;
 	private JButton btn7;

@@ -1,7 +1,6 @@
 package mock.sensors;
 
 import static org.junit.Assert.*;
-import mock.Foo;
 import mock.geofunctions.DistanceTo;
 import mock.geofunctions.Position;
 
